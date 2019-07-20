@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <h1 class="mb-3">Form</h1>
+
+    <!-- http://getbootstrap.com/docs/4.1/components/forms/ -->
+    <form onsubmit="validateMyForm()" name = "myForm" action="/form" method="post">
+
+        <!-- TODO -->
+        <div>
+        <input class="form-control" autocomplete="off" autofocus name="name" placeholder="Name" type="text">
+        </div>
+        <br>
+        <div>
+        <select name="team" class="form-control">
+            <option disabled selected value>Team</option>
+            <option value ="LLM">LLM</option>
+            <option value = "SEO">SEO</option>
+            <option value = "PPC">PPC</option>
+            <option value = "Social">Social</option>
+        </select>
+        </div>
+        <div>
+        <p>Where would you like to go for the company's event?</p>
+        <input name = "place" type="radio" value = "Top Golf">
+        <label for="Top Golf">Top Golf</label>
+        <br>
+        <input name = "place" type="radio" value = "Escape Room">
+        <label for="Escape Room">Escape Room</label>
+        <br>
+        <input name = "place" type="radio" value = "Main Event">
+        <label for="Main Event">Main Event</label>
+        <br>
+        </div>
+        <!-- http://getbootstrap.com/docs/4.1/components/buttons/ -->
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <br>
+    </form>
+
+    <script type= "text/javascript">
+
+    document.querySelector('form').onsubmit = function() {
+            if (!document.querySelector('input').value) {
+                alert('You must provide your name!');
+                return false;
+            }
+            else if (!$('select').val()) {
+                alert('You must provide your team!');
+                return false;
+            }
+            else if (!$('input[name="place"]:checked').val()) {
+                alert('You must provide your venue!');
+                return false;
+            }
+            return true;
+        };
+
+        /* TODO */
+
+    </script>
+
+{% endblock %}
